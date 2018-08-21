@@ -1,0 +1,60 @@
+<div>
+  <h1>Articles List</h1>
+  <p>Below is a list of dynamic article links</p>
+
+  <div class="row" ng-if="i % 3 === 0">
+    <div class="col-sm-4" *ngFor="let article of articles$ | async; index as i">
+      <div class="thumbnail">
+        <a [routerLink]="['/articles', article.id]">
+          <img [src]="article.img" [alt]="article.title" style="width:100%">
+          <div class="caption">
+            <p>{{ article.description}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row" *ngIf="(articles$ | async).length %3 === 0">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a [routerLink]="['/articles', article.id]">
+          <img [src]="article.img" [alt]="article.title" style="width:100%">
+          <div class="caption">
+            <p>{{ article.description}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div> -->
+  <!-- <ul>
+    <li *ngFor="let article of articles$ | async"> -->
+
+      <!--Square brackets allow us to pass an expression-->
+      <!--We combine /animals with name from Firestore (e.g. /animals/cat)-->
+      <!-- <a [routerLink]="['/articles', article.id]">{{ article.name }}</a>
+
+    </li>
+  </ul> -->
+  <button (click)="showForm = true" class="btn btn-primary">Create Article</button>
+  <div *ngIf="showForm">
+    <form (ngSubmit)="onSubmit()" #createArticleForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="newArticle.title" name="title" class="form-control" id="title">
+      </div>
+      <div class="form-group">
+        <label for="img">Image URL</label>
+        <input type="text" [(ngModel)]="newArticle.img" name="img" class="form-control" id="img">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="newArticle.description" name="description" class="form-control" id="description">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" (click)="showForm = false" class="btn btn-primary">Cancel</button>
+    </form>
+  </div>
+  <!--Tells the router where to load the child components-->
+  <!-- <router-outlet></router-outlet> -->
+</div>

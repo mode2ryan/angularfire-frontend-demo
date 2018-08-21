@@ -1,0 +1,25 @@
+<div *ngIf="article$ | async as article">
+  <h1>{{ article.title }}</h1>
+  <img [src]="article.img" class="img-responsive"  style="max-width: 50%; max-height: 50%;" [alt]="article.title">
+  <p>{{ article.description }}</p>
+  <button (click)="showEditForm = true" class="btn btn-primary">Edit</button>
+  <div *ngIf="showEditForm">
+    <form (ngSubmit)="onEditFormSubmit()" #editArticleForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="newArticle.title" (ngModelChange)="onChange('title')" name="title" class="form-control" id="title">
+      </div>
+      <div class="form-group">
+        <label for="img">Image URL</label>
+        <input type="text" [(ngModel)]="newArticle.img" (ngModelChange)="onChange('img')" name="img" class="form-control" id="img">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="newArticle.description" (ngModelChange)="onChange('description')" name="description" class="form-control" id="description">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" (click)="showEditForm = false" class="btn btn-primary">Cancel</button>
+    </form>
+  </div>
+  <button *ngIf="!showEditForm" (click)="confirmDelete()" class="btn btn-warning">Delete</button>
+</div>
