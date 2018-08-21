@@ -95,6 +95,13 @@ export class ArticleDetailsComponent implements OnInit {
     this.showEditForm = false;
   }
 
+  onCancel() {
+    this.showEditForm = false;
+    this.fieldsUpdated = [];
+    // reset to current data
+    this.article$.subscribe(data => this.newArticle = data);
+  }
+
   confirmDelete() {
     const answer = prompt('Are you sure you want to delete this article? (yes or no)');
     if(answer === "yes") {

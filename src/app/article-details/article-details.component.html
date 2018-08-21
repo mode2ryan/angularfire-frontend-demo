@@ -18,7 +18,7 @@
         <input type="text" [(ngModel)]="newArticle.description" (ngModelChange)="onChange('description')" name="description" class="form-control" id="description">
       </div>
       <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" (click)="showEditForm = false" class="btn btn-primary">Cancel</button>
+      <button type="button" (click)="onCancel()" class="btn btn-primary">Cancel</button>
     </form>
   </div>
   <button *ngIf="!showEditForm" (click)="confirmDelete()" class="btn btn-warning">Delete</button>
