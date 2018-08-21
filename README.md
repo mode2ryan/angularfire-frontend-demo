@@ -105,6 +105,20 @@ ng serve --open
 
 Great article/video here, [AngularFirebase - Deploying an Angular App to Firebase](https://angularfirebase.com/lessons/deploying-an-angular-app-to-firebase/).
 
+## Additional Reading
+
+[Lessons from a long week with Firebase](https://itnext.io/lessons-from-a-long-week-with-firebase-b433ce8ee49e)
+
+## Firestore Security Rules
+
+Here are some resources covering `Firestore Security Rules`.
+
+[Firestore Rules Reference](https://firebase.google.com/docs/reference/rules/rules)
+[Firestore Rules Documentation](https://firebase.google.com/docs/firestore/security/overview)
+[Eric Dicanini’s Article on Firestore Security Rules](https://www.ericdecanini.com/2018/02/03/understanding-cloud-firestore-security-rules/)
+[Jeff Delaney’s Article on Firestore Secuirty Rules](https://angularfirebase.com/lessons/firestore-security-rules-guide/)
+[Jeff Delaney’s Article on Firestore with Role Based Auth (incl. some security rules snippets)](https://angularfirebase.com/lessons/role-based-authorization-with-firestore-nosql-and-angular-5/)
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
