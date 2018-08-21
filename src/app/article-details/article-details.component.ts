@@ -43,6 +43,7 @@ export class ArticleDetailsComponent implements OnInit {
         console.log('form is showing while an update came in..');
         let mergedArticle: Article = this.mergeArticle(data, this.newArticle);
         this.newArticle = mergedArticle;
+        this.fieldsUpdated = [];
       }
     });
   }

@@ -7,6 +7,10 @@
 
 https://angular-firebase-213402.firebaseapp.com/
 
+## AngularFire Documentation
+
+[AngularFire Documentation](https://github.com/angular/angularfire2)
+
 ## Install Instructions
 
 ### (Optional) Download VSCode
