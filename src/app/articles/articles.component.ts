@@ -29,6 +29,9 @@ export class ArticlesComponent implements OnInit {
     // this.articles$ = db.collection<Article>('articles').valueChanges();
 
     // .snapshotChanges() for all meta data (including document id)
+    // this.articles$ = this.db.collection<Article>('articles').valueChanges();
+
+
     this.articles$ = this.db.collection<Article>('articles')
     .snapshotChanges().pipe(
       map(actions => actions.map(a => {

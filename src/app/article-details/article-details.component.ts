@@ -20,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
 
   article$: Observable<Article>;
   showEditForm: Boolean = false;
-  name: String;
+  name: String; // mbUOHY5xLCiYg9kDBrrm
   newArticle: Article = {
     title: "",
     img: "",

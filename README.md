@@ -5,7 +5,7 @@
 
 ## Completed Project
 
-https://angular-firebase-213402.firebaseapp.com/
+https://angularfirebase-demo-b76d4.firebaseapp.com/
 
 ## AngularFire Documentation
 
@@ -103,6 +103,84 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ```bash
 ng serve --open
+```
+
+## Creating a project from scratch
+
+```bash
+ng new myapp --routing
+ng generate component home
+ng generate component error
+ng generate component articles
+ng generate component article
+ng add @ng-bootstrap/schematics
+```
+
+### Install AngularFire2
+
+```bash
+npm install firebase angularfire2 --save
+```
+
+Once installed, we need to update the `app.module.ts` file with our new imports for `firesbase` and `angularfire2`.
+
+```js
+import { environment } from '../environments/environment';
+export const firebaseConfig = environment.firebaseConfig;
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+...
+@NgModule({
+  ...
+  imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    NgbModule.forRoot()
+  ]
+```
+
+We also need to update our `environment.ts` file with our `firebaseConfig`.
+
+```js
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzapadpidajofjfabbRuhUtm-jFg1J0GRc",
+    authDomain: "angularfirebase-demo-0000.firebaseapp.com",
+    databaseURL: "https://angularfirebase-demo-0000.firebaseio.com",
+    projectId: "angularfirebase-demo-0000",
+    storageBucket: "angularfirebase-demo-0000.appspot.com",
+    messagingSenderId: "102000110032"
+  }
+};
+```
+
+Now we can start pulling in data from firestore using the AngularFire library.
+
+### Example Snippet (the project is already setup with working code for this)
+
+```js
+import { Component } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  template: `
+  <ul>
+    <li *ngFor="let item of items | async">
+      {{ item.name }}
+    </li>
+  </ul>
+  `
+})
+export class MyApp {
+  items: Observable<any[]>;
+  constructor(db: AngularFirestore) {
+    this.items = db.collection('items').valueChanges();
+  }
+}
 ```
 
 ## Deploy to Firebase Hosting
